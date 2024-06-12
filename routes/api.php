@@ -1,9 +1,21 @@
 <?php
 
-use App\Http\Controllers\Api\Auth\AuthController;
+/*use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\ReplySupportApiController;
-use App\Http\Controllers\Api\SupportController;
+use App\Http\Controllers\Api\SupportController;*/
+use App\Http\Controllers\Api\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/users',[UserController::class, 'index']);
+
+Route::post('/users',[UserController::class, 'store']);
+
+route::get('/', function (){
+    return response()->json([
+       'success' => true
+    ]);
+});
 
 Route::post('/login', [AuthController::class, 'auth']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
